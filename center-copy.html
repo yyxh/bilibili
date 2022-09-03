@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body,html{
+            width: 100%;
+            height: 100%;
+        }
+        body{            
+            display: flex;
+        }
+        .icon{
+            margin: auto;
+        }
+        .block{
+            width: 200px;
+            height: 200px;
+            background: red;
+            display: flex;
+        }
+        .content{
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div class="icon">
+        <h1>快速居中对齐</h1>
+    </div> -->
+    <div class="block">
+        <div class="content">我要居中</div>
+    </div>
+</body>
+<script>
+    function deepClone(source){
+        // []=> Array(基类) {} => Object
+        const targetObj = source.constructor === Array ? [] : {}
+        for(let keys in source){
+            if(source.hasOwnProperty(keys)){
+                if(source[keys] &&  typeof source[keys] === 'object'){
+                    // targetObj[keys] = source[keys].constructor === Array ? [] : {}
+                    // 递归
+                    targetObj[keys] = deepClone(source[keys])
+                }else{
+                    //基本数据类型
+                    targetObj[keys] = source[keys]
+                }    
+            }
+        }
+        return targetObj
+    }
+    let obj = {
+        ff:'eee',
+        aa:[1,3,4,5]
+    }
+    let newObj = deepClone(obj);
+    newObj.ff = 'dd'
+    newObj.aa.push('dd')
+    console.log(newObj)
+</script>
+</html>

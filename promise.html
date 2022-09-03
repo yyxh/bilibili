@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //状态：1-pending ; 2-fulfilled ; 3-reject
+    let isForget = true;
+    let getLv = new Promise((resolve, reject) => {
+        if(isForget){
+            let lv = {
+                color: 'orange',
+                price: '¥99'
+            }
+            //得到包包
+            resolve(lv)
+        }else{
+            let err = new Error('加班去了，应酬去了')
+            reject(err)
+        }
+    })
+
+    let buyLip = (lv) => {
+        let lip = {
+            brand:'ysl',
+            color:'pink'
+        }
+        let msg = {
+            message: lip.brand + lip.color + lv.color,
+            lip:lip,
+            lv:lv
+        }
+        return Promise.resolve(msg);
+    }
+    // let testFn = function(){
+    //     getLv.then((fulfilled) => {
+    //         console.log(fulfilled)
+    //     }).catch((rejected) => {
+    //         console.log(rejected.message)
+    //     })
+    // }
+    // testFn();
+    let testFn2 = () => {
+        getLv
+        .then(buyLip) //promise
+        .then((fulfilled) => {
+            console.log(fulfilled)
+        }).catch((rejected) => {
+            console.log(rejected.message)
+        })
+    }
+    testFn2();
+</script>
+</html>
