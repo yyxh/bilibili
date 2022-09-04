@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //var let const
+    //1. 声明提升--先上车后买票
+    // console.log(num)  //undefined
+    // var num = 123
+
+    //2. 变量覆盖 --套牌车
+    // var num1 = 12
+    // var num2 = 34
+    // console.log(num1)  //34
+
+    //3. 没有块级作用域-- 红杏出墙
+    function fn(){
+        for(var i=0; i<3; i++){
+            console.log(i)
+        }
+        console.log(i)
+    }
+    fn()
+
+    // 1、const 的值不可以改；
+    // 2、const声明之后必须赋值
+    // 3、支持let的其他属性
+
+    //解构互换值
+    let a = 1;
+    let b = 2;
+    [a,b] = [b,a] 
+
+    // es6 数组去重
+    let arr = [12,12,13,45,78]
+    let item = [...new Set(arr)]
+    console.log(item)
+
+    //promise => 构造函数同步执行
+    const promise = new Promise((resolve,reject) => {
+        console.log(1)
+        resolve()
+        console.log(2)
+    })
+    //.then()异步执行
+    promise.then(() => {
+        console.log(3)
+    })
+    console.log(4)
+    //打印结果 1，2，4，3
+</script>
+</html>

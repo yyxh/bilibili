@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //闭包是什么？ -- 方法里返回一个方法
+    function a(){
+        let a1 = 1
+        return function(){
+            return a1
+        }
+    }
+    //闭包存在的意义
+    //1、延长变量的生命周期
+    //2、创建私有环境
+
+    //闭包会常驻内存--慎用闭包
+    // vue中使用闭包
+    // data(){
+    //     return {
+
+    //     }
+    // }
+
+    let makeCounter = function(){
+        let num = 0
+        function changeBy(val){
+            num += val
+        }
+        return {
+            add: function(){
+                changeBy(1)
+            },
+            reduce: function(){
+                changeBy(-1)
+            },
+            value: function(){
+                return num
+            }
+        }
+    }
+
+    let counter1 = makeCounter()
+    let counter2 = makeCounter()
+    counter1.add()
+    counter1.add()  //2
+    counter2.add()  //1
+
+
+
+</script>
+</html>
