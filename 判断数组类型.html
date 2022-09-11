@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <iframe src="./iframe.html" frameborder="0"></iframe>
+    <script>
+        //1、基本数据类型 typeof
+        console.log(typeof 123) //number
+        console.log(typeof '123') //string
+        console.log(typeof [123]) //object
+        console.log(typeof {}) //object
+        console.log(typeof null) //object
+        console.log(typeof undefined) //undefined
+        //2、判断数据的构造函数 instanceof 
+        var array = []
+        var array2 = new Array()
+        console.log('array',array instanceof Array)  //true
+        console.log('array2',array2 instanceof Array) //true
+        console.log('array2',{} instanceof Array) //false
+        //注意：instanceof只有一个全局window才会返回true
+        setTimeout(_ =>{
+            console.log(window.frames[0])
+            console.log('iframe',window.frames[0].iArray instanceof Array)  //false
+            console.log('iframe1',Object.prototype.toString.call(window.frames[0].iArray)) //'[object Array]'
+        },500)
+        //3、最准确判断数据类型的方法
+        console.log('num',Object.prototype.toString.call(1)) //'[object Number]'
+
+        
+    </script>
+</body>
+</html>

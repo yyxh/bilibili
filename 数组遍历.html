@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var list = [
+            {
+                name:'小红1',
+                age:'11'
+            },
+            {
+                name:'小红2',
+                age:'12'
+            },
+            {
+                name:'小红3',
+                age:'13'
+            }
+        ]
+        // 1、forEach为数组里面每一项进行操作，没有返回值不被打破
+        var res1 = list.forEach(el=>{
+            el.class="222"
+            return '122' //不返回
+        })
+        console.log('forEach',res1)  //undefined
+
+        // 2、map为数组里面每一项进行操作，并返回一个新数组
+        var res2 = list.map(el=>{
+            if(el.age>12){
+                return el
+            }
+        })
+        console.log('res2',res2) //[undefined,undefined,{
+            //     name:'小红3',
+            //     age:'13'
+            // }]
+
+        // 3、filter 循环过滤符合条件的数组，返回一个新数组
+        var res3 = list.filter(el=>{
+            return el.age>12  //布尔值
+        })    
+        console.log('res3',res3)  //[{
+            //     name:'小红3',
+            //     age:'13'
+            // }]
+        
+        // 4、返回符合条件的第一个
+        var res4 = list.find(el => {
+            return el.age>12
+        })
+
+        // 5、返回符合条件第一个元素的下标
+        var res5 = list.findIndex(el=>{
+            return el.age>12
+        })
+
+        //6、some 有真则真
+        //7、every 有假则假
+        //8、reduce 累加
+        var arr1 = [1,2,3]
+        var res = arr1.reduce((p,n)=>p+n)
+        console.log('res',res)
+    </script>
+</body>
+</html>
